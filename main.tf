@@ -44,13 +44,12 @@ resource "azurerm_postgresql_server" "main" {
   version                      = var.version
   administrator_login          = var.administrator_login
   administrator_login_password = random_password.password.result
-  storage_mb                   = 640000
 
-  backup_retention_days        = 7
-  geo_redundant_backup_enabled = true
-  auto_grow_enabled            = true
-
+  backup_retention_days            = 7
+  geo_redundant_backup_enabled     = true
+  auto_grow_enabled                = true
   public_network_access_enabled    = false
   ssl_enforcement_enabled          = true
   ssl_minimal_tls_version_enforced = "TLS1_2"
+  storage_mb                       = 640000
 }
