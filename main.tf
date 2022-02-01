@@ -24,6 +24,33 @@ resource "azurerm_resource_group" "rg" {
   tags     = merge({ "ResourceName" = format("%s", var.resource_group_name) }, var.tags, )
 }
 
+# Randon password for Login Admin
+#------------------------------------
+resource "random_password" "password" {
+  length           = 16
+  special          = true
+  override_special = "_%@"
+}
+
 #---------------------------------------------------------
 # Postgres Creation or selection
 #---------------------------------------------------------
+
+resource "azurerm_postgresql_server" "main" {
+  name                         = var.name
+  location                     = local.location
+  resource_group_name          = local.resource_group_name
+  sku_name                     = var.sku_name
+  version                      = var.version
+  administrator_login          = var.administrator_login
+  administrator_login_password = random_password.password.result
+  storage_mb                   = 640000
+
+  backup_retention_days        = 7
+  geo_redundant_backup_enabled = true
+  auto_grow_enabled            = true
+
+  public_network_access_enabled    = false
+  ssl_enforcement_enabled          = true
+  ssl_minimal_tls_version_enforced = "TLS1_2"
+}
