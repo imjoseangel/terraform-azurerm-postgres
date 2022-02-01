@@ -23,3 +23,7 @@ resource "azurerm_resource_group" "rg" {
   location = var.location
   tags     = merge({ "ResourceName" = format("%s", var.resource_group_name) }, var.tags, )
 }
+
+#---------------------------------------------------------
+# Postgres Creation or selection
+#---------------------------------------------------------
