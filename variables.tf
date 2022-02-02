@@ -37,8 +37,8 @@ variable "psql_version" {
 
 variable "auto_grow_enabled" {
   description = "(Optional) Enable/Disable auto-growing of the storage. Storage auto-grow prevents your server from running out of storage and becoming read-only. If storage auto grow is enabled, the storage automatically grows without impacting the workload. The default value if not explicitly specified is true"
-  type        = string
-  default     = "true"
+  type        = bool
+  default     = true
 }
 
 variable "backup_retention_days" {
@@ -49,14 +49,14 @@ variable "backup_retention_days" {
 
 variable "geo_redundant_backup_enabled" {
   description = "(Optional) Turn Geo-redundant server backups on/off. This allows you to choose between locally redundant or geo-redundant backup storage in the General Purpose and Memory Optimized tiers. When the backups are stored in geo-redundant backup storage, they are not only stored within the region in which your server is hosted, but are also replicated to a paired data center. This provides better protection and ability to restore your server in a different region in the event of a disaster. This is not support for the Basic tier. Changing this forces a new resource to be created."
-  type        = string
-  default     = "true"
+  type        = bool
+  default     = true
 }
 
 variable "public_network_access_enabled" {
   description = "(Optional) Enable/Disable public network access. If enabled, the server is accessible from the Internet. The default value if not explicitly specified is false."
-  type        = string
-  default     = "false"
+  type        = bool
+  default     = false
 }
 
 variable "storage_mb" {
