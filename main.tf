@@ -41,7 +41,7 @@ resource "azurerm_postgresql_server" "main" {
   location                         = local.location
   resource_group_name              = local.resource_group_name
   sku_name                         = var.sku_name
-  version                          = var.version
+  version                          = var.psql_version
   administrator_login              = var.administrator_login
   administrator_login_password     = random_password.password.result
   geo_redundant_backup_enabled     = true

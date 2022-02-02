@@ -29,7 +29,7 @@ variable "sku_name" {
   default     = "GP_Gen5_8"
 }
 
-variable "version" {
+variable "psql_version" {
   description = "(Required) Specifies the version of PostgreSQL to use. Valid values are 9.5, 9.6, 10, 10.0, and 11. Changing this forces a new resource to be created."
   type        = string
   default     = "11"
@@ -45,4 +45,10 @@ variable "backup_retention_days" {
   description = "The number of days a backup is retained. Range of 7 to 35 days. Default value is 7 days."
   type        = string
   default     = "7"
+}
+
+variable "tags" {
+  description = "Tags to apply to all resources created."
+  type        = map(string)
+  default     = {}
 }
