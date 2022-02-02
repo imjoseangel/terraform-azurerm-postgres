@@ -34,3 +34,15 @@ variable "version" {
   type        = string
   default     = "11"
 }
+
+variable "auto_grow_enabled" {
+  description = "(Optional) Enable/Disable auto-growing of the storage. Storage auto-grow prevents your server from running out of storage and becoming read-only. If storage auto grow is enabled, the storage automatically grows without impacting the workload. The default value if not explicitly specified is true"
+  type        = string
+  default     = "true"
+}
+
+variable "backup_retention_days" {
+  description = "The number of days a backup is retained. Range of 7 to 35 days. Default value is 7 days."
+  type        = string
+  default     = "7"
+}

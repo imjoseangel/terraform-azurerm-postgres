@@ -37,17 +37,14 @@ resource "random_password" "password" {
 #---------------------------------------------------------
 
 resource "azurerm_postgresql_server" "main" {
-  name                         = var.name
-  location                     = local.location
-  resource_group_name          = local.resource_group_name
-  sku_name                     = var.sku_name
-  version                      = var.version
-  administrator_login          = var.administrator_login
-  administrator_login_password = random_password.password.result
-
-  backup_retention_days            = 7
+  name                             = var.name
+  location                         = local.location
+  resource_group_name              = local.resource_group_name
+  sku_name                         = var.sku_name
+  version                          = var.version
+  administrator_login              = var.administrator_login
+  administrator_login_password     = random_password.password.result
   geo_redundant_backup_enabled     = true
-  auto_grow_enabled                = true
   public_network_access_enabled    = false
   ssl_enforcement_enabled          = true
   ssl_minimal_tls_version_enforced = "TLS1_2"
