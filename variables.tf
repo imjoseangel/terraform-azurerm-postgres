@@ -47,6 +47,24 @@ variable "backup_retention_days" {
   default     = "7"
 }
 
+variable "geo_redundant_backup_enabled" {
+  description = "(Optional) Turn Geo-redundant server backups on/off. This allows you to choose between locally redundant or geo-redundant backup storage in the General Purpose and Memory Optimized tiers. When the backups are stored in geo-redundant backup storage, they are not only stored within the region in which your server is hosted, but are also replicated to a paired data center. This provides better protection and ability to restore your server in a different region in the event of a disaster. This is not support for the Basic tier. Changing this forces a new resource to be created."
+  type        = string
+  default     = "true"
+}
+
+variable "public_network_access_enabled" {
+  description = "(Optional) Enable/Disable public network access. If enabled, the server is accessible from the Internet. The default value if not explicitly specified is false."
+  type        = string
+  default     = "false"
+}
+
+variable "storage_mb" {
+  description = "(Optional) Max storage allowed for a server. Possible values are between 5120 MB(5GB) and 1048576 MB(1TB) for the Basic SKU and between 5120 MB(5GB) and 16777216 MB(16TB) for General Purpose/Memory Optimized SKUs"
+  type        = string
+  default     = "5120"
+}
+
 variable "tags" {
   description = "Tags to apply to all resources created."
   type        = map(string)
