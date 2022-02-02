@@ -37,7 +37,7 @@ resource "random_password" "password" {
 #---------------------------------------------------------
 
 resource "azurerm_postgresql_server" "main" {
-  #ts:skip=AC_AZURE_0389 RSG lock should be skipped for now.
+  #ts:skip=accurics.azure.BDR.163 PGSQL should be skipped for now.
   name                             = var.name
   location                         = local.location
   resource_group_name              = local.resource_group_name
