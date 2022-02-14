@@ -50,4 +50,5 @@ resource "azurerm_postgresql_server" "main" {
   ssl_enforcement_enabled          = true
   ssl_minimal_tls_version_enforced = "TLS1_2"
   storage_mb                       = var.storage_mb
+  tags                             = merge({ "ResourceName" = format("%s", var.name) }, var.tags, )
 }
